@@ -303,3 +303,46 @@ function bubbleSort(arr) {
   
   const nos = [5, 1, 4, 2, 8];
   console.log("Bubble sort : ",bubbleSort(nos));
+
+//Program 23 : Balanced Brackets In An Expression
+//Input: exp = “[()]{}{[()()]()}” 
+//Output: Balanced
+//Input: exp = “[(])” 
+//Output: Not Balanced 
+
+function isBalanced(str)
+{
+    var stack = [];
+    for(let i =0;i<str.length;i++)
+    {
+        
+        if(str[i] == "[" || str[i] == "{" || str[i] == "(")
+        {
+            stack.push(str[i]);
+        }else{
+            var popEle = stack.pop();
+            if((popEle == "[" && str[i] == "]") || (popEle == "{" && str[i] == "}") || (popEle == "(" && str[i] == ")"))
+            {
+                continue;
+            }else{
+                return false;
+            }
+        }
+    }
+    
+    if(stack.length > 0)
+    {
+        return false;
+    }else{
+        return true;
+    }
+}
+
+let str = "[(])";
+var res = isBalanced(str);
+if(res)
+{
+    console.log("Balanced");
+}else{
+    console.log("Not Balanced");
+}
